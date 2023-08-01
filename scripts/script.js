@@ -102,6 +102,15 @@ const Personas = [
       desc: `
       Another easy one! This one of the Mortal Kombat game characters is just the robotic cop best known from fun 80s films.`,
     },
+    {
+        id: 10,
+        title: "Tijani",
+        category: "not humain",
+        attaque: "talking",
+        img: "./images/tijani.jpg",
+        desc: `
+        Another easy one! This one of the Mortal Kombat game characters is just the robotic cop best known from fun 80s films.`,
+      },
   ];
 
   /**
@@ -109,10 +118,62 @@ const Personas = [
    */
 
   const section = document.querySelector('.section-center');
-  const allButtons = document.querySelectorAll('.filter-btn');
+  const container =   document.querySelector('.btn-container');
 
   window.addEventListener('DOMContentLoaded', () => {
+    
     displayPerson(Personas);
+
+     const categories = Personas.reduce((values,item) => {
+
+        if(!values.includes(item.category)){
+
+                values.push(item.category);
+        }
+    
+        return values;
+
+     },['all'])
+
+
+     const categoryBtns = categories.map(category => {
+
+            return `
+            <button class="filter-btn" data-filter="${category}" type="button">${category}</button>
+            `;
+     }).join("");
+    container.innerHTML = categoryBtns;
+    const allButtons = document.querySelectorAll('.filter-btn');
+    
+  allButtons.forEach(item => {
+
+    item.addEventListener('click',(e) => {
+
+        const categoryFilter = e.currentTarget.dataset.filter;
+
+        
+          const filterByCategory = Personas.filter(it => {
+
+                if(it.category === categoryFilter){
+
+                   return it;
+                }
+
+          });
+
+          if(categoryFilter === 'all'){
+
+                  displayPerson(Personas);
+          }
+
+          else {
+
+               displayPerson(filterByCategory);
+
+          }
+    })
+
+});
 
   });
 
@@ -145,36 +206,15 @@ const Personas = [
 
 
     display = display.join('');
-
     section.innerHTML = display;
   }
 
-  allButtons.forEach(item => {
 
-      item.addEventListener('click',(e) => {
-
-          const categoryFilter = e.currentTarget.dataset.filter;
-
-          
-            const filterByCategory = Personas.filter(it => {
-
-                  if(it.category === categoryFilter){
-
-                     return it;
-                  }
-
-            });
-
-            if(categoryFilter === 'all'){
-
-                    displayPerson(Personas);
-            }
-
-            else {
-
-                 displayPerson(filterByCategory);
-
-            }
-      })
-
-  });
+  /**
+   * 
+   * Bonus how to dynamically set filters
+   * imaginaning adding another category, technically we can add 
+   * the data in the array and add another button handling the category
+   * 
+   * Make it automatic 
+   */

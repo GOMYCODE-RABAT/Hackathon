@@ -11,21 +11,29 @@ The project will be created on 2 device screens
 
 ### Primary
 
-- Soft blue: hsl(215, 51%, 70%)
-- Cyan: hsl(178, 100%, 50%)
+--main-bg: hsl(217, 54%, 11%);
+--White: hsl(0, 0%, 100%);
+--light-gray: hsl(212, 33%, 89%);
 
-### Neutral
+### Secondary
 
-- Very dark blue (main BG): hsl(217, 54%, 11%)
-- Very dark blue (card BG): hsl(216, 50%, 16%)
-- Very dark blue (line): hsl(215, 32%, 27%)
-- White: hsl(0, 0%, 100%)
+--clr-gold: #c59d5f;
+
+## assets : 
+
+--transition: all 0.3s linear;
+--spacing: 0.25rem;
+--radius: 0.5rem;
+--light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+--dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+--max-width: 1440;
+--fixed-width: 620px;
 
 ## Typography
 
 ### Body Copy
 
-- Font size (paragraph): the font size should be relative to the parent root element
+- Font size (paragraph): 0.875rem (root element);
 
 ### Font
 
